@@ -18,6 +18,7 @@ pipeline {
     stages {
         stage('Sonarqube - Static application security testing process') {
             steps {
+                sh 'rm -rf *report*'
                 sh 'cd app/py-sample/'
                 sh 'sonar-scanner \
                     -Dsonar.projectKey=$SqProject \
