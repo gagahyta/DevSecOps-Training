@@ -35,6 +35,7 @@ pipeline {
         stage('Trivy - Container security scan') {
             steps {
                 sh('cd app/py-sample/deploy')
+                sh('rm -rf *report*')
                 sh('trivy image --exit-code 0 --severity HIGH,CRITICAL ${ImageRegistry}/devsecops:v${BUILD_NUMBER}')
             }
         }
